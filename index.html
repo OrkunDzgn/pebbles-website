@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pebbles - Your Wellness Journey</title>
+    <title>Pebbles - Mood & Relationship Tracker</title>
     <style>
         * {
             margin: 0;
@@ -12,7 +12,7 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
             background-color: #F6F3EE;
             color: #2C2C2C;
             line-height: 1.6;
@@ -28,7 +28,10 @@
         /* Header */
         header {
             padding: 20px 0;
-            position: relative;
+            position: sticky;
+            top: 0;
+            background-color: rgba(246, 243, 238, 0.95);
+            backdrop-filter: blur(10px);
             z-index: 100;
         }
 
@@ -48,11 +51,8 @@
         }
 
         .logo::before {
-            content: "";
-            width: 12px;
-            height: 12px;
-            background: linear-gradient(45deg, #D4A5A5, #B8617A);
-            border-radius: 50%;
+            content: "🪨";
+            font-size: 20px;
             animation: float 3s ease-in-out infinite;
         }
 
@@ -80,6 +80,7 @@
             padding: 12px 24px;
             border-radius: 25px;
             font-weight: 600;
+            text-decoration: none;
             box-shadow: 0 4px 15px rgba(184, 97, 122, 0.3);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
@@ -91,11 +92,11 @@
 
         /* Hero Section */
         .hero {
-            padding: 80px 0;
+            padding: 80px 0 120px;
             position: relative;
-            min-height: 600px;
             display: flex;
             align-items: center;
+            min-height: 70vh;
         }
 
         .hero-content {
@@ -143,7 +144,7 @@
             gap: 10px;
             background: #2C2C2C;
             color: white;
-            padding: 12px 20px;
+            padding: 15px 25px;
             border-radius: 12px;
             text-decoration: none;
             font-weight: 600;
@@ -169,6 +170,370 @@
             align-items: center;
         }
 
+        .phone-mockup img {
+            width: 300px;
+            height: auto;
+            max-height: 600px;
+            object-fit: contain;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.1));
+        }
+
+        /* About Us Section */
+        .about-us {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2C2C2C;
+            margin-bottom: 30px;
+        }
+
+        .about-text .emoji {
+            font-size: 2rem;
+            margin-left: 10px;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .about-story {
+            background: #F6F3EE;
+            padding: 30px;
+            border-radius: 20px;
+            margin-top: 30px;
+        }
+
+        .about-story h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #B8617A;
+            margin-bottom: 15px;
+        }
+
+        .about-photos {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .photo-placeholder {
+            width: 300px;
+            height: 400px;
+            background: linear-gradient(135deg, #B8617A, #D4A5A5);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(184, 97, 122, 0.2);
+        }
+
+        .founders-names {
+            text-align: center;
+        }
+
+        .founders-names h4 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #2C2C2C;
+            margin-bottom: 5px;
+        }
+
+        .founders-names p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .features-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .features-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2C2C2C;
+            margin-bottom: 20px;
+        }
+
+        .features-header .emoji {
+            font-size: 2rem;
+            margin-left: 10px;
+        }
+
+        .features-header p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 40px 20px;
+            border-radius: 20px;
+            background: #F6F3EE;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(184, 97, 122, 0.1);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #B8617A, #D4A5A5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #2C2C2C;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Simple but Powerful Section */
+        .simple-powerful {
+            padding: 100px 0;
+            background: #F6F3EE;
+        }
+
+        .simple-powerful-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .simple-powerful-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2C2C2C;
+            margin-bottom: 20px;
+        }
+
+        .simple-powerful-header .emoji {
+            font-size: 2rem;
+            margin-left: 10px;
+        }
+
+        .simple-powerful-header p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .mood-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .mood-feature {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .mood-feature:hover {
+            transform: translateY(-3px);
+        }
+
+        .mood-feature .emoji-large {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .mood-feature h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #2C2C2C;
+        }
+
+        .mood-feature p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Testimonial Section */
+        .testimonial {
+            padding: 80px 0;
+            background: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial-container {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 400%; /* 4 testimonials * 100% each */
+        }
+
+        .testimonial-card {
+            width: 25%; /* Each card takes 1/4 of the container width */
+            flex-shrink: 0;
+            padding: 40px;
+            background: #F6F3EE;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin: 0 10px;
+            box-sizing: border-box;
+        }
+
+        .testimonial-content {
+            font-size: 1.3rem;
+            color: #2C2C2C;
+            margin-bottom: 30px;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #B8617A, #D4A5A5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .author-info h5 {
+            font-weight: 600;
+            color: #2C2C2C;
+        }
+
+        .author-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Testimonial Navigation Dots */
+        .testimonial-dots {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 40px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #D4A5A5;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            opacity: 0.5;
+        }
+
+        .dot.active {
+            background: #B8617A;
+            opacity: 1;
+            transform: scale(1.2);
+        }
+
+        .dot:hover {
+            opacity: 0.8;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #B8617A, #D4A5A5);
+            text-align: center;
+            color: white;
+        }
+
+        .final-cta h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .final-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .final-cta .app-buttons {
+            justify-content: center;
+        }
+
+        .final-cta .app-btn {
+            background: white;
+            color: #2C2C2C;
+        }
+
+        .final-cta .app-btn:hover {
+            background: #f8f8f8;
+        }
+
         /* Floating Elements */
         .floating-element {
             position: absolute;
@@ -176,6 +541,7 @@
             background: linear-gradient(135deg, #B8617A, #D4A5A5);
             opacity: 0.1;
             animation: float 6s ease-in-out infinite;
+            z-index: -1;
         }
 
         .floating-element:nth-child(1) {
@@ -213,16 +579,96 @@
                 display: none;
             }
 
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
             .app-buttons {
                 flex-direction: column;
                 align-items: center;
             }
 
-            .phone-screen {
-                top: 27px;
-                left: 27px;
-                width: 186px;
-                height: 426px;
+            .phone-mockup img {
+                width: 250px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .mood-features {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .features-header h2,
+            .simple-powerful-header h2,
+            .final-cta h2 {
+                font-size: 2rem;
+            }
+
+            .testimonial-card {
+                padding: 30px 20px;
+                margin: 0 5px;
+            }
+
+            .testimonial-content {
+                font-size: 1.1rem;
+            }
+
+            .testimonial-dots {
+                margin-top: 30px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .about-text h2 {
+                font-size: 2rem;
+            }
+
+            .photo-placeholder {
+                width: 250px;
+                height: 300px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .mood-features {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-card {
+                padding: 25px 15px;
+            }
+
+            .testimonial-content {
+                font-size: 1rem;
+            }
+
+            .about-text h2 {
+                font-size: 1.8rem;
+            }
+
+            .photo-placeholder {
+                width: 200px;
+                height: 250px;
+                font-size: 0.9rem;
+            }
+
+            .about-story {
+                padding: 20px;
             }
         }
     </style>
@@ -236,6 +682,10 @@
         <div class="container">
             <nav>
                 <div class="logo">Pebbles</div>
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#" class="download-btn">Download Now</a></li>
+                </ul>
             </nav>
         </div>
     </header>
@@ -244,30 +694,229 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1>Strengthen Your <span class="highlight">Relationship</span> Connection</h1>
-                    <p>Discover deeper intimacy with Pebbles - the couples app that connects partners, tracks moods, and creates a safe space to explore your relationship together.</p>
+                    <h1>A mood tracking app you'll <span class="highlight">love using</span></h1>
+                    <p>A simple and beautiful mood tracking app designed to help you understand and improve your emotional wellbeing, day by day.</p>
                     
                     <div class="app-buttons">
                         <a href="#" class="app-btn">
                             <svg viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
                             </svg>
-                            App Store
-                        </a>
-                        <a href="#" class="app-btn">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
-                            </svg>
-                            Google Play
+                            Download on iOS
                         </a>
                     </div>
                 </div>
                 
                 <div class="phone-mockup">
-                    <img src="apple-iphone-15-pro-max-black-titanium-portrait.png" alt="iPhone 15 Pro Max mockup" style="width: 280px; height: auto; max-height: 560px; object-fit: contain;"/>
+                    <img src="apple-iphone-15-pro-max-black-titanium-portrait.png" alt="Pebbles app on iPhone" />
                 </div>
             </div>
         </div>
     </section>
+
+    <section class="about-us">
+        <div class="container">
+            <div class="about-content">
+                                 <div class="about-text">
+                     <h2>Hi, We're Idil and Orkun <span class="emoji">💖</span></h2>
+                     <p>Our story started with a long distance relationship that lasted more than a year. We know firsthand how challenging it can be to stay emotionally connected when you're apart, and how important it is to understand your feelings and communicate them effectively.</p>
+                     <p>We have been together for 12 years and married for 5 years. Throughout our journey, we've learned that tracking and understanding our emotions has been crucial for maintaining a strong, healthy relationship.</p>
+                     <div class="about-story">
+                         <h3>Why We Built Pebbles</h3>
+                         <p>From navigating the ups and downs of long distance to building a life together, we realized that emotional awareness is the foundation of every strong relationship. We created Pebbles to help couples and individuals understand their emotional patterns, communicate better, and build deeper connections.</p>
+                     </div>
+                 </div>
+                                 <div class="about-photos">
+                     <div class="photo-placeholder">Idil & Orkun's Photo</div>
+                     <div class="founders-names">
+                         <h4>Idil & Orkun</h4>
+                         <p>Co-founders</p>
+                     </div>
+                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <div class="features-header">
+                <h2>The basics, but better <span class="emoji">✨</span></h2>
+                <p>Built so you'll want to open it and track your daily mood journey with features that actually matter to your wellbeing.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">✨</div>
+                    <h3>Mood Tracking</h3>
+                    <p>Track your daily moods with beautiful visualizations and gain insights into your emotional patterns over time.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🏠</div>
+                    <h3>Stay Connected</h3>
+                    <p>Quick access to log your mood right from your home screen with beautiful, customizable widgets.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🔔</div>
+                    <h3>Reminders</h3>
+                    <p>Gentle reminders to check in with yourself and maintain consistent mood tracking habits.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="simple-powerful">
+        <div class="container">
+            <div class="simple-powerful-header">
+                <h2>Simple, but powerful <span class="emoji">🤝</span></h2>
+                <p>Almost all features can be turned on/off so you can make the app as simple (or powerful) as you need it to be. Focus on what matters most to your mental health journey.</p>
+            </div>
+            
+            <div class="mood-features">
+                <div class="mood-feature">
+                    <span class="emoji-large">☀️</span>
+                    <h4>Morning Moods</h4>
+                    <p>Start your day with intention</p>
+                </div>
+                
+                <div class="mood-feature">
+                    <span class="emoji-large">🌙</span>
+                    <h4>Evening Reflection</h4>
+                    <p>End your day with mindfulness</p>
+                </div>
+                
+                <div class="mood-feature">
+                    <span class="emoji-large">📈</span>
+                    <h4>Mood Analytics</h4>
+                    <p>Understand your patterns</p>
+                </div>
+                
+                <div class="mood-feature">
+                    <span class="emoji-large">🔒</span>
+                    <h4>Privacy First</h4>
+                    <p>Your data stays yours</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonial">
+        <div class="container">
+            <div class="testimonial-slider">
+                <div class="testimonial-container">
+                                         <div class="testimonial-card">
+                         <p class="testimonial-content">"Being in a long distance relationship can be emotionally challenging. Pebbles helps me track my feelings and share my mood patterns with my partner, making us feel more connected despite the distance."</p>
+                         <div class="testimonial-author">
+                             <div class="author-avatar">S</div>
+                             <div class="author-info">
+                                 <h5>Sarah M.</h5>
+                                 <p>In a long distance relationship</p>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="testimonial-card">
+                         <p class="testimonial-content">"After 10 years of marriage, Pebbles has helped my wife and I understand each other's emotional cycles better. We use it to navigate our daily ups and downs together with more empathy and patience."</p>
+                         <div class="testimonial-author">
+                             <div class="author-avatar">J</div>
+                             <div class="author-info">
+                                 <h5>James L.</h5>
+                                 <p>Married for 10 years</p>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="testimonial-card">
+                         <p class="testimonial-content">"Dating someone new can bring so many emotions! Pebbles helps me understand my feelings and communicate better with my partner. It's been amazing for building a healthy relationship foundation."</p>
+                         <div class="testimonial-author">
+                             <div class="author-avatar">M</div>
+                             <div class="author-info">
+                                 <h5>Maria R.</h5>
+                                 <p>Dating for 5 months</p>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="testimonial-card">
+                         <p class="testimonial-content">"Balancing marriage and parenting with two kids is intense! Pebbles helps me stay aware of my emotional state so I can be the best partner and parent possible, even on the toughest days."</p>
+                         <div class="testimonial-author">
+                             <div class="author-avatar">A</div>
+                             <div class="author-info">
+                                 <h5>Alex T.</h5>
+                                 <p>Married with 2 kids</p>
+                             </div>
+                         </div>
+                     </div>
+                </div>
+                <div class="testimonial-dots">
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <span class="dot" onclick="currentSlide(4)"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="final-cta" id="download">
+        <div class="container">
+            <h2>Start your wellness journey today</h2>
+            <p>Join thousands of users who are taking control of their emotional wellbeing with Pebbles.</p>
+            <div class="app-buttons">
+                <a href="#" class="app-btn">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                    </svg>
+                    Download on iOS
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        let slideIndex = 1;
+        const totalSlides = 4;
+        
+        // Initialize the slider
+        document.addEventListener('DOMContentLoaded', function() {
+            showSlide(slideIndex);
+            
+            // Auto-slide every 5 seconds
+            setInterval(function() {
+                slideIndex++;
+                if (slideIndex > totalSlides) {
+                    slideIndex = 1;
+                }
+                showSlide(slideIndex);
+            }, 5000);
+        });
+        
+        // Function to show specific slide
+        function currentSlide(n) {
+            slideIndex = n;
+            showSlide(slideIndex);
+        }
+        
+        // Function to show slide
+        function showSlide(n) {
+            const container = document.querySelector('.testimonial-container');
+            const dots = document.querySelectorAll('.dot');
+            
+            if (n > totalSlides) {
+                slideIndex = 1;
+            }
+            if (n < 1) {
+                slideIndex = totalSlides;
+            }
+            
+            // Calculate transform percentage (each slide is 25% wide, so we move by -25% * (index - 1))
+            const translateX = -25 * (slideIndex - 1);
+            container.style.transform = `translateX(${translateX}%)`;
+            
+            // Update active dot
+            dots.forEach(dot => dot.classList.remove('active'));
+            if (dots[slideIndex - 1]) {
+                dots[slideIndex - 1].classList.add('active');
+            }
+        }
+    </script>
 </body>
 </html>
