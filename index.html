@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth dark">
 
 <head>
     <meta charset="UTF-8">
@@ -23,6 +23,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
@@ -58,10 +59,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
-        body {
-            background-color: #0F0508;
-            color: white;
-        }
+        /* body rule removed as it is empty */
 
         .glass-card {
             background: rgba(255, 255, 255, 0.03);
@@ -74,11 +72,7 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .text-gradient {
-            background: linear-gradient(to bottom right, #ffe4e6, #ffffff, #fecdd3);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        /* .text-gradient removed */
 
         .btn-gradient {
             background: linear-gradient(to top right, #f43f5e, #ea580c);
@@ -95,7 +89,8 @@
     </style>
 </head>
 
-<body class="antialiased min-h-screen relative overflow-x-hidden selection:bg-rose-500/30">
+<body
+    class="antialiased min-h-screen relative overflow-x-hidden selection:bg-[#FF6B00]/30 bg-[#F7F7F7] dark:bg-[#0F0508] text-[#1A1A1A] dark:text-white transition-colors duration-700">
 
     <!-- Dynamic Background -->
     <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
@@ -126,16 +121,17 @@
                     <img src="logo.png" alt="Pebbles Logo" class="w-full h-full object-cover">
                 </div>
                 <span
-                    class="font-bold text-xl tracking-tight text-white/90 group-hover:text-white transition-colors">Pebbles</span>
+                    class="font-bold text-xl tracking-tight text-[#1A1A1A] dark:text-white/90 group-hover:text-black dark:group-hover:text-white transition-colors">Pebbles</span>
             </a>
 
             <div class="hidden md:flex items-center gap-8">
                 <a href="#features"
-                    class="text-sm font-medium text-white/60 hover:text-white transition-colors">Features</a>
-                <a href="#story" class="text-sm font-medium text-white/60 hover:text-white transition-colors">Our
+                    class="text-sm font-medium text-[#666666] dark:text-white/60 hover:text-[#1A1A1A] dark:hover:text-white transition-colors">Features</a>
+                <a href="#story"
+                    class="text-sm font-medium text-[#666666] dark:text-white/60 hover:text-[#1A1A1A] dark:hover:text-white transition-colors">Our
                     Story</a>
                 <a href="#"
-                    class="px-5 py-2.5 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-all text-sm font-medium text-white">
+                    class="px-5 py-2.5 rounded-full bg-white border border-gray-200 dark:bg-white/5 dark:border-white/10 hover:bg-gray-50 dark:hover:bg-white/10 transition-all text-sm font-medium text-[#1A1A1A] dark:text-white shadow-sm dark:shadow-none">
                     Download
                 </a>
             </div>
@@ -145,20 +141,21 @@
     <!-- Hero Section -->
     <section class="relative z-10 pt-40 pb-20 lg:pt-52 lg:pb-32 px-6">
         <!-- Time Toggle -->
+        <!-- Time Toggle -->
         <div class="absolute top-28 left-0 right-0 flex justify-center z-20">
             <button id="timeToggle"
-                class="relative flex items-center bg-black/20 border border-white/10 rounded-full p-1 gap-2 backdrop-blur-md transition-colors hover:bg-white/5 cursor-pointer">
+                class="relative flex items-center bg-white border border-gray-200 dark:bg-black/20 dark:border-white/10 rounded-full p-1 gap-2 backdrop-blur-md transition-colors hover:border-[#FF6B00]/30 dark:hover:bg-white/5 cursor-pointer shadow-sm dark:shadow-none">
                 <div id="toggleBg"
-                    class="absolute inset-y-1 left-1 w-[calc(50%-4px)] bg-white/10 rounded-full shadow-sm border border-white/5 transition-all duration-300">
+                    class="absolute inset-y-1 left-1 w-[calc(50%-4px)] bg-[#FF6B00] dark:bg-white/10 rounded-full shadow-sm border border-transparent dark:border-white/5 transition-all duration-300">
                 </div>
 
                 <div id="amText"
-                    class="relative z-10 flex items-center justify-center gap-2 px-3 py-1.5 text-yellow-300 transition-colors duration-300">
+                    class="relative z-10 flex items-center justify-center gap-2 px-3 py-1.5 text-white dark:text-yellow-300 transition-colors duration-300">
                     <i data-lucide="sun" class="w-3.5 h-3.5"></i>
                     <span class="font-bold uppercase tracking-wider text-[10px]">AM</span>
                 </div>
                 <div id="pmText"
-                    class="relative z-10 flex items-center justify-center gap-2 px-3 py-1.5 text-white/30 transition-colors duration-300">
+                    class="relative z-10 flex items-center justify-center gap-2 px-3 py-1.5 text-[#666666] dark:text-white/30 transition-colors duration-300">
                     <span class="font-bold uppercase tracking-wider text-[10px]">PM</span>
                     <i data-lucide="moon" class="w-3.5 h-3.5"></i>
                 </div>
@@ -174,9 +171,11 @@
                 </div>
                 <h1 class="text-5xl lg:text-7xl font-bold leading-[1.1] mb-6 tracking-tight">
                     Mood tracking <br />
-                    <span class="text-gradient">you'll actually love.</span>
+                    <span
+                        class="bg-clip-text text-transparent bg-gradient-to-br from-[#1A1A1A] to-[#666666] dark:from-rose-100 dark:via-white dark:to-rose-200">you'll
+                        actually love.</span>
                 </h1>
-                <p class="text-lg text-white/50 leading-relaxed max-w-lg mb-10">
+                <p class="text-lg text-[#666666] dark:text-white/50 leading-relaxed max-w-lg mb-10">
                     A beautiful, shared space for couples to track moods, understand emotions, and grow closer together.
                     Simple, private, and designed with love.
                 </p>
@@ -187,7 +186,7 @@
                         <span>Download for iOS</span>
                     </button>
                     <button
-                        class="px-8 py-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 text-white font-semibold transition-all flex items-center justify-center gap-2">
+                        class="px-8 py-4 rounded-2xl bg-white border border-gray-200 dark:bg-white/5 dark:border-white/10 hover:bg-gray-50 dark:hover:bg-white/10 text-[#1A1A1A] dark:text-white font-semibold transition-all flex items-center justify-center gap-2 shadow-sm dark:shadow-none">
                         <span>View Features</span>
                         <i data-lucide="arrow-right" class="w-4 h-4"></i>
                     </button>
@@ -216,7 +215,8 @@
     <!-- Story Section -->
     <section id="story" class="relative z-10 py-24 px-6">
         <div class="max-w-4xl mx-auto">
-            <div class="glass-card rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden">
+            <div
+                class="bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-gray-200 dark:border-white/5 shadow-lg dark:shadow-none rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden transition-colors duration-500">
                 <div
                     class="absolute top-0 right-0 w-64 h-64 bg-rose-500/10 blur-[80px] rounded-full pointer-events-none">
                 </div>
@@ -230,21 +230,21 @@
                         </div>
                     </div>
                     <div class="text-center md:text-left">
-                        <h2 class="text-2xl font-bold mb-4">Hi, We're Idil & Orkun</h2>
-                        <p class="text-white/60 leading-relaxed mb-4">
+                        <h2 class="text-2xl font-bold mb-4 text-[#1A1A1A] dark:text-white">Hi, We're Idil & Orkun</h2>
+                        <p class="text-[#666666] dark:text-white/60 leading-relaxed mb-4">
                             Our story started with a long distance relationship that lasted more than a year. We know
                             firsthand how challenging it can be to stay emotionally connected when you're apart, and how
                             important it is to understand your feelings and communicate them effectively.
                         </p>
-                        <p class="text-white/60 leading-relaxed mb-6">
+                        <p class="text-[#666666] dark:text-white/60 leading-relaxed mb-6">
                             We have been together for 12 years and married for 5 years. Throughout our journey, we've
                             learned that tracking and understanding our emotions has been crucial for maintaining a
                             strong, healthy relationship.
                         </p>
                         <div
-                            class="flex items-center justify-center md:justify-start gap-2 text-sm font-medium text-rose-300">
+                            class="flex items-center justify-center md:justify-start gap-2 text-sm font-medium text-rose-500 dark:text-rose-300">
                             <span>Made with love in Berlin</span>
-                            <i data-lucide="heart" class="w-4 h-4 fill-rose-300"></i>
+                            <i data-lucide="heart" class="w-4 h-4 fill-rose-500 dark:fill-rose-300"></i>
                         </div>
                     </div>
                 </div>
@@ -253,12 +253,14 @@
     </section>
 
     <!-- Why We Built Pebbles Section -->
-    <section class="relative z-10 py-24 px-6 bg-white/5">
+    <section
+        class="relative z-10 py-24 px-6 bg-white dark:bg-white/5 border-y border-gray-100 dark:border-none transition-colors duration-500">
         <div class="max-w-3xl mx-auto text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6">
-                Why We Built <span class="text-gradient">Pebbles</span>
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-[#1A1A1A] dark:text-white">
+                Why We Built <span
+                    class="bg-clip-text text-transparent bg-gradient-to-br from-[#1A1A1A] to-[#666666] dark:from-rose-100 dark:via-white dark:to-rose-200">Pebbles</span>
             </h2>
-            <p class="text-lg text-white/60 leading-relaxed">
+            <p class="text-lg text-[#666666] dark:text-white/60 leading-relaxed">
                 From navigating the ups and downs of long distance to building a life together, we realized that
                 emotional awareness is the foundation of every strong relationship. We created Pebbles to help couples
                 and individuals understand their emotional patterns, communicate better, and build deeper connections.
@@ -267,46 +269,54 @@
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="relative z-10 py-24 border-y border-white/5">
+    <section id="features"
+        class="relative z-10 py-24 border-y border-gray-200 dark:border-white/5 transition-colors duration-500">
         <div class="max-w-6xl mx-auto px-6">
             <div class="text-center max-w-2xl mx-auto mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">The basics, <span
-                        class="text-rose-400">reimagined.</span></h2>
-                <p class="text-white/50">Everything you need to understand yourself and your partner, without the
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-[#1A1A1A] dark:text-white">The basics, <span
+                        class="text-rose-500 dark:text-rose-400">reimagined.</span></h2>
+                <p class="text-[#666666] dark:text-white/50">Everything you need to understand yourself and your
+                    partner, without the
                     clutter.</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-6">
                 <!-- Feature 1 -->
-                <div class="glass-card p-8 rounded-3xl hover:bg-white/10 transition-colors group">
+                <div
+                    class="bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-gray-200 dark:border-white/5 shadow-lg dark:shadow-none p-8 rounded-3xl hover:bg-white dark:hover:bg-white/10 transition-colors group">
                     <div
-                        class="w-12 h-12 rounded-2xl bg-rose-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <i data-lucide="zap" class="w-6 h-6 text-rose-400"></i>
+                        class="w-12 h-12 rounded-2xl bg-rose-500/10 dark:bg-rose-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="zap" class="w-6 h-6 text-rose-500 dark:text-rose-400"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">Energy & Intimacy</h3>
-                    <p class="text-sm text-white/50 leading-relaxed">Track vital metrics like energy levels and intimacy
+                    <h3 class="text-xl font-semibold mb-3 text-[#1A1A1A] dark:text-white">Energy & Intimacy</h3>
+                    <p class="text-sm text-[#666666] dark:text-white/50 leading-relaxed">Track vital metrics like energy
+                        levels and intimacy
                         desires to sync better with your partner.</p>
                 </div>
 
                 <!-- Feature 2 -->
-                <div class="glass-card p-8 rounded-3xl hover:bg-white/10 transition-colors group">
+                <div
+                    class="bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-gray-200 dark:border-white/5 shadow-lg dark:shadow-none p-8 rounded-3xl hover:bg-white dark:hover:bg-white/10 transition-colors group">
                     <div
-                        class="w-12 h-12 rounded-2xl bg-orange-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <i data-lucide="flame" class="w-6 h-6 text-orange-400"></i>
+                        class="w-12 h-12 rounded-2xl bg-orange-500/10 dark:bg-orange-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="flame" class="w-6 h-6 text-orange-500 dark:text-orange-400"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">Streak Builder</h3>
-                    <p class="text-sm text-white/50 leading-relaxed">Keep the flame alive. Build streaks together by
+                    <h3 class="text-xl font-semibold mb-3 text-[#1A1A1A] dark:text-white">Streak Builder</h3>
+                    <p class="text-sm text-[#666666] dark:text-white/50 leading-relaxed">Keep the flame alive. Build
+                        streaks together by
                         checking in daily and sharing your moments.</p>
                 </div>
 
                 <!-- Feature 3 -->
-                <div class="glass-card p-8 rounded-3xl hover:bg-white/10 transition-colors group">
+                <div
+                    class="bg-white/80 dark:bg-white/5 backdrop-blur-xl border border-gray-200 dark:border-white/5 shadow-lg dark:shadow-none p-8 rounded-3xl hover:bg-white dark:hover:bg-white/10 transition-colors group">
                     <div
-                        class="w-12 h-12 rounded-2xl bg-purple-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                        <i data-lucide="sparkles" class="w-6 h-6 text-purple-400"></i>
+                        class="w-12 h-12 rounded-2xl bg-purple-500/10 dark:bg-purple-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="sparkles" class="w-6 h-6 text-purple-500 dark:text-purple-400"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">Daily Sparks</h3>
-                    <p class="text-sm text-white/50 leading-relaxed">Get daily tips and small gestures to surprise your
+                    <h3 class="text-xl font-semibold mb-3 text-[#1A1A1A] dark:text-white">Daily Sparks</h3>
+                    <p class="text-sm text-[#666666] dark:text-white/50 leading-relaxed">Get daily tips and small
+                        gestures to surprise your
                         partner and improve your relationship.</p>
                 </div>
             </div>
@@ -314,20 +324,22 @@
     </section>
 
     <!-- Footer -->
-    <footer class="relative z-10 py-12 border-t border-white/5 bg-black/20">
+    <footer
+        class="relative z-10 py-12 border-t border-gray-200 dark:border-white/5 bg-white dark:bg-black/20 transition-colors duration-500">
         <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex items-center gap-2 opacity-50 hover:opacity-100 transition-opacity">
+            <div
+                class="flex items-center gap-2 opacity-50 hover:opacity-100 transition-opacity text-[#1A1A1A] dark:text-white">
                 <div class="w-6 h-6 rounded-lg overflow-hidden">
                     <img src="logo.png" alt="Pebbles Logo" class="w-full h-full object-cover">
                 </div>
                 <span class="font-bold">Pebbles</span>
             </div>
-            <div class="flex gap-6 text-sm text-white/40">
-                <a href="#" class="hover:text-white transition-colors">Privacy</a>
-                <a href="#" class="hover:text-white transition-colors">Terms</a>
-                <a href="#" class="hover:text-white transition-colors">Contact</a>
+            <div class="flex gap-6 text-sm text-[#666666] dark:text-white/40">
+                <a href="#" class="hover:text-[#1A1A1A] dark:hover:text-white transition-colors">Privacy</a>
+                <a href="#" class="hover:text-[#1A1A1A] dark:hover:text-white transition-colors">Terms</a>
+                <a href="#" class="hover:text-[#1A1A1A] dark:hover:text-white transition-colors">Contact</a>
             </div>
-            <div class="text-sm text-white/20">
+            <div class="text-sm text-[#666666]/60 dark:text-white/20">
                 © 2025 Pop Art Global LLC
             </div>
         </div>
@@ -350,69 +362,86 @@
         const phoneBorderGlow = document.getElementById('phoneBorderGlow');
 
         if (toggleBtn) {
-            toggleBtn.addEventListener('click', () => {
-                isMorning = !isMorning;
+            // Set initial state based on time of day (matches React component)
+            const hour = new Date().getHours();
+            isMorning = hour < 18;
+
+            // Function to update theme
+            const updateTheme = () => {
                 if (isMorning) {
+                    // Enable Light Mode (AM)
+                    document.documentElement.classList.remove('dark');
+
                     // Toggle Switch UI
-                    toggleBg.classList.remove('left-[calc(50%+2px)]');
-                    toggleBg.classList.add('left-1');
+                    toggleBg.classList.remove('left-[calc(50%+2px)]', 'dark:bg-white/10', 'dark:border-white/5');
+                    toggleBg.classList.add('left-1', 'bg-[#FF6B00]');
 
-                    amText.classList.add('text-yellow-300');
-                    amText.classList.remove('text-white/30');
+                    amText.classList.remove('text-white', 'dark:text-yellow-300');
+                    amText.classList.add('text-white'); // In light mode, AM text is inside the orange pill, so white
 
-                    pmText.classList.add('text-white/30');
-                    pmText.classList.remove('text-indigo-300');
+                    pmText.classList.remove('text-indigo-300', 'dark:text-white/30');
+                    pmText.classList.add('text-[#666666]');
 
                     // Theme Colors (Morning)
-                    bgGradient.className = "absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(244,63,94,0.15),rgba(15,5,8,1))] transition-all duration-1000";
-                    particle1.classList.remove('bg-indigo-900/20');
-                    particle1.classList.add('bg-rose-600/25');
+                    // Background: Light Gray/White
+                    bgGradient.className = "absolute inset-0 bg-[#F7F7F7] transition-all duration-1000";
 
-                    particle2.classList.remove('bg-purple-900/20');
-                    particle2.classList.add('bg-orange-600/25');
+                    // Particle 1: Warm Yellow
+                    particle1.className = "absolute top-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full blur-[100px] animate-float transition-all duration-1000 bg-[#FFD54F] opacity-20 mix-blend-multiply";
 
-                    particle3.classList.remove('bg-blue-900/10');
-                    particle3.classList.add('bg-pink-600/20');
+                    // Particle 2: Warm Orange
+                    particle2.className = "absolute bottom-[10%] right-[-5%] w-[600px] h-[600px] rounded-full blur-[120px] animate-float transition-all duration-1000 bg-[#FF6B00] opacity-10 mix-blend-multiply";
+
+                    // Particle 3: Pinkish
+                    particle3.className = "absolute top-[40%] left-[60%] w-[300px] h-[300px] rounded-full blur-[80px] animate-float transition-all duration-1000 bg-pink-500 opacity-10 mix-blend-multiply";
 
                     // Phone Glow (Morning)
-                    phoneGlow.classList.remove('from-indigo-500/20', 'to-purple-500/20');
-                    phoneGlow.classList.add('from-rose-500/20', 'to-orange-500/20');
+                    phoneGlow.className = "absolute inset-0 bg-gradient-to-tr from-[#FF6B00]/20 to-[#FFD54F]/20 blur-[60px] rounded-full transition-colors duration-1000";
 
                     // Phone Border Glow (Morning)
-                    phoneBorderGlow.classList.remove('from-indigo-500', 'to-purple-600');
-                    phoneBorderGlow.classList.add('from-rose-500', 'to-orange-600');
+                    phoneBorderGlow.className = "absolute -inset-1 bg-gradient-to-r from-[#FF6B00] to-[#FFD54F] rounded-[4rem] blur opacity-20 transition-colors duration-1000";
 
                 } else {
+                    // Enable Dark Mode (PM)
+                    document.documentElement.classList.add('dark');
+
                     // Toggle Switch UI
-                    toggleBg.classList.remove('left-1');
-                    toggleBg.classList.add('left-[calc(50%+2px)]');
+                    toggleBg.classList.remove('left-1', 'bg-[#FF6B00]');
+                    toggleBg.classList.add('left-[calc(50%+2px)]', 'dark:bg-white/10', 'dark:border-white/5');
 
-                    amText.classList.remove('text-yellow-300');
-                    amText.classList.add('text-white/30');
+                    amText.classList.remove('text-white');
+                    amText.classList.add('text-white', 'dark:text-yellow-300'); // Reset to default dark mode styles
 
-                    pmText.classList.remove('text-white/30');
-                    pmText.classList.add('text-indigo-300');
+                    pmText.classList.remove('text-[#666666]');
+                    pmText.classList.add('text-indigo-300', 'dark:text-white/30');
 
                     // Theme Colors (Evening)
-                    bgGradient.className = "absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,11,56,0.4),rgba(15,5,8,1))] transition-all duration-1000";
+                    // Background: Deep Dark Radial
+                    bgGradient.className = "absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,11,56,0.6),rgba(15,5,8,1))] transition-all duration-1000";
 
-                    particle1.classList.remove('bg-rose-900/20');
-                    particle1.classList.add('bg-indigo-900/20');
+                    // Particle 1: Indigo
+                    particle1.className = "absolute top-[-10%] left-[-10%] w-[500px] h-[500px] rounded-full blur-[100px] animate-float transition-all duration-1000 bg-indigo-500 opacity-20 mix-blend-screen";
 
-                    particle2.classList.remove('bg-orange-900/20');
-                    particle2.classList.add('bg-purple-900/20');
+                    // Particle 2: Purple
+                    particle2.className = "absolute bottom-[10%] right-[-5%] w-[600px] h-[600px] rounded-full blur-[120px] animate-float transition-all duration-1000 bg-purple-600 opacity-20 mix-blend-screen";
 
-                    particle3.classList.remove('bg-purple-900/10');
-                    particle3.classList.add('bg-blue-900/10');
+                    // Particle 3: Blue
+                    particle3.className = "absolute top-[40%] left-[60%] w-[300px] h-[300px] rounded-full blur-[80px] animate-float transition-all duration-1000 bg-blue-900/20 opacity-20 mix-blend-screen";
 
                     // Phone Glow (Evening)
-                    phoneGlow.classList.remove('from-rose-500/20', 'to-orange-500/20');
-                    phoneGlow.classList.add('from-indigo-500/20', 'to-purple-500/20');
+                    phoneGlow.className = "absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-purple-500/20 blur-[60px] rounded-full transition-colors duration-1000";
 
                     // Phone Border Glow (Evening)
-                    phoneBorderGlow.classList.remove('from-rose-500', 'to-orange-600');
-                    phoneBorderGlow.classList.add('from-indigo-500', 'to-purple-600');
+                    phoneBorderGlow.className = "absolute -inset-1 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-[4rem] blur opacity-20 transition-colors duration-1000";
                 }
+            };
+
+            // Run once on load to ensure sync
+            updateTheme();
+
+            toggleBtn.addEventListener('click', () => {
+                isMorning = !isMorning;
+                updateTheme();
             });
         }
 
